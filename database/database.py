@@ -1,6 +1,6 @@
 from asyncpg_lite import DatabaseManager
 from config_data.config import Config, load_config
-from sqlalchemy import Integer, String, Boolean, ARRAY
+from sqlalchemy import Integer, Boolean, ARRAY
 
 # Загружаем конфиг в переменную config
 config: Config = load_config()
