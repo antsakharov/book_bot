@@ -8,6 +8,7 @@ from aiogram.fsm.storage.memory import MemoryStorage
 from config_data.config import Config, load_config
 from handlers import other_handlers, user_handlers
 from keyboards.main_menu import set_main_menu
+from database.database import create_table_users
 
 # Инициализируем логгер
 logger = logging.getLogger(__name__)
@@ -26,6 +27,9 @@ async def main():
 
     # Загружаем конфиг в переменную config
     config: Config = load_config()
+
+    # Создаем таблицу в базе данных
+    await create_table_users()
 
     # Инициализируем бот и диспетчер
     bot = Bot(
