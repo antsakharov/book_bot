@@ -1,6 +1,6 @@
 from asyncpg_lite import DatabaseManager
 from config_data.config import Config, load_config
-from sqlalchemy import Integer, Boolean, ARRAY
+from sqlalchemy import Integer, Boolean, ARRAY, BigInteger
 
 # Загружаем конфиг в переменную config
 config: Config = load_config()
@@ -13,7 +13,7 @@ pg_manager = DatabaseManager(db_url=config.pg_manager.pg_link, deletion_password
 async def create_table_users(table_name='users'):
     async with pg_manager:
         columns = [
-            {"name": "user_id", "type": Integer, "options": {"primary_key": True, "autoincrement": False}},
+            {"name": "user_id", "type": BigInteger, "options": {"primary_key": True, "autoincrement": False}},
             {"name": "page", "type": Integer},
             {"name": "bookmarks", "type": ARRAY(Integer)},
             {"name": "user_state", "type": Boolean},
